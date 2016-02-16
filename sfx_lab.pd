@@ -1,106 +1,39 @@
-#N canvas 891 23 840 1001 10;
+#N canvas 694 23 840 1001 10;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array array1 174848 float 2;
-#X coords 0 1 174848 -1 200 140 1;
+#X array array1 396544 float 2;
+#X coords 0 1 396544 -1 200 140 1;
 #X restore 565 26 graph;
 #X obj 48 132 adc~;
-#X msg 144 188 open rec.wav;
-#X msg 149 234 start;
-#X msg 156 281 stop;
+#X msg 98 191 open rec.wav;
+#X msg 113 227 start;
+#X msg 163 228 stop;
 #X obj 37 350 writesf~ 2;
-#X msg 449 220 read -resize rec.wav array1;
-#X obj 480 260 soundfiler;
-#X floatatom 638 283 5 0 0 0 - - -;
-#X obj 521 657 dac~;
-#X msg 588 443 5 \, 66148 750;
-#X obj 464 381 line~;
-#X obj 467 409 tabread~ array2;
 #N canvas 0 22 450 278 (subpatch) 0;
 #X array array2 100 float 5;
 #A 0 -0.194757 -0.109042 -0.123328 -0.109042 -0.0947566 -0.0804708
 -0.0518992 -0.0518992 -0.0376134 -0.0233276 0.00524403 0.0195298 0.0338156
-0.0338156 0.0623872 0.0909588 0.11953 0.148102 0.219531 0.248103 0.319532
-0.362389 0.405246 0.46239 0.505247 0.533819 0.548105 0.548105 0.548105
--0.209043 -0.237615 -0.280472 -0.323329 -0.330472 -0.337615 -0.344758
--0.351901 -0.359044 -0.366187 -0.37333 -0.380473 -0.380473 -0.380473
--0.380473 -0.380473 -0.380473 -0.380473 -0.380473 -0.366187 -0.351901
--0.332853 -0.313806 -0.294758 -0.270948 -0.247139 -0.223329 -0.204281
--0.185233 -0.166186 -0.123328 -0.0804708 -0.00904179 0.0623872 0.148102
-0.405246 0.490961 0.576676 0.648105 0.73382 0.78382 0.833821 0.890964
-0.948107 0.990964 1.03382 1.03382 0.962393 0.90525 0.848106 0.798106
-0.748106 -0.194757 -0.180471 -0.166186 -0.187614 -0.180471 -0.180471
--0.180471 -0.180471 -0.180471 -0.180471 -0.180471 -0.180471 -0.123328
--0.2519 -0.266186 -0.2519 -0.209043 -0.159043 0.283817;
+0.0338156 0.0623872 0.0909588 0.11953 0.148102 0.148102 0.133816 0.11953
+0.105245 0.0909588 0.076673 0.0600062 0.0433394 0.0266727 0.0100059
+-0.00666086 -0.0233276 -0.0433278 -0.0633279 -0.083328 -0.103328 -0.123328
+-0.1519 -0.180471 -0.209043 -0.237615 -0.266186 -0.298329 -0.330472
+-0.362615 -0.394759 -0.437616 -0.480473 -0.509045 -0.537617 -0.551902
+-0.580474 -0.59476 -0.59476 -0.59476 -0.585236 -0.575712 -0.566188
+-0.559045 -0.551902 -0.0233276 -0.0518992 -0.066185 -0.0804708 -0.1019
+-0.123328 -0.1519 -0.166186 -0.173329 -0.180471 -0.189043 -0.197614
+-0.206186 -0.214757 -0.223329 -0.223329 -0.223329 -0.223329 -0.223329
+-0.223329 -0.223329 -0.223329 -0.223329 -0.223329 -0.223329 -0.223329
+-0.223329 -0.223329 -0.223329 -0.223329 -0.223329 -0.223329 -0.223329
+-0.223329 -0.223329 -0.223329 -0.223329 -0.223329 -0.223329 -0.223329
+-0.223329 -0.223329;
 #X coords 0 1 99 -1 200 140 1;
 #X restore 784 36 graph;
-#X obj 476 513 tabread4~ array1;
-#X obj 481 295 expr 44100 / $f1;
-#X obj 591 342 phasor~;
-#X obj 594 387 *~;
-#X obj 660 324 print~;
-#X obj 498 603 freeverb~;
-#X obj 467 554 *~ 1.7;
-#X msg 622 508 0;
-#X msg 664 508 1;
 #X text 45 70 PSEUDO CODE:;
 #X text 44 94 1 Record a soundfile;
-#X text 264 141 2 Edit start and stop times \, playback speed;
-#X obj 632 563 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X msg 672 610 open sfx.wav;
-#X msg 628 653 start;
-#X obj 616 715 writesf~ 2;
-#X msg 689 670 stop;
-#X msg 463 350 1 \, $f1 1500;
-#X text 276 191 3 Add effects;
-#X text 222 226 4 Save effected sound;
-#X obj 150 839 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#N canvas 0 22 450 278 (subpatch) 0;
-#X array array4 174848 float 4;
-#X coords 0 1 174847 -1 200 140 1 0 0;
-#X restore 200 771 graph;
-#X obj 152 960 tabwrite~ array4;
-#X obj 65 818 soundfiler;
-#X floatatom 61 930 5 0 0 0 - - -;
-#X msg 66 779 read -resize rec.wav array4;
-#X msg 121 1045 write -wave test array4;
+#X text 260 93 2 Edit start and stop times \, playback speed;
+#X text 82 439 3 Add effects;
+#X text 413 457 4 Save effected sound;
 #X text 48 24 Roll Your Own SFX Pure Data Intro;
-#X msg 45 422 read -resize rec.wav array5;
-#N canvas 0 22 450 278 (subpatch) 0;
-#X array array5 100 float 3;
-#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0;
-#X coords 0 1 99 -1 200 140 1;
-#X restore 252 378 graph;
-#X obj 40 594 line~;
-#X obj 39 634 tabread~ array5;
-#X obj 40 666 *~ 0.7;
-#X obj 44 705 dac~;
-#X obj 170 485 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
-#X obj 239 632 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
-#X msg 38 523 $f5 \, $f6 $f7;
-#X msg 164 632 t b f;
-#N canvas 1125 289 450 300 recorder 0;
-#X obj 46 37 adc~;
-#X msg 142 93 open rec.wav;
-#X msg 147 139 start;
-#X msg 154 186 stop;
-#X obj 35 255 writesf~ 2;
-#X obj 129 35 inlet;
-#X connect 0 0 4 0;
-#X connect 0 1 4 1;
-#X connect 1 0 4 0;
-#X connect 2 0 4 0;
-#X connect 3 0 4 0;
-#X connect 5 0 1 0;
-#X restore 108 146 pd recorder;
-#N canvas 427 224 714 607 reverb 1;
-#X msg 244 48 read -resize rec.wav array1;
+#N canvas 427 224 714 607 reverb 0;
 #X obj 275 88 soundfiler;
 #X obj 316 485 dac~;
 #X msg 383 271 5 \, 66148 750;
@@ -123,76 +56,45 @@
 #X obj 527 285 inlet;
 #X obj 583 283 inlet;
 #X obj 637 284 inlet;
-#X connect 0 0 1 0;
-#X connect 1 0 7 0;
-#X connect 1 0 9 1;
-#X connect 4 0 5 0;
-#X connect 5 0 8 0;
-#X connect 6 0 12 0;
+#X msg 244 48 read -resize rec.wav reverb_scope;
+#X connect 0 0 6 0;
+#X connect 0 0 8 1;
+#X connect 3 0 4 0;
+#X connect 4 0 7 0;
+#X connect 5 0 11 0;
+#X connect 6 0 7 0;
+#X connect 6 0 9 0;
 #X connect 7 0 8 0;
-#X connect 7 0 10 0;
-#X connect 8 0 9 0;
-#X connect 9 0 6 0;
-#X connect 11 0 2 0;
-#X connect 11 0 17 0;
-#X connect 11 1 2 1;
-#X connect 11 1 17 1;
-#X connect 12 0 11 0;
+#X connect 8 0 5 0;
+#X connect 10 0 1 0;
+#X connect 10 0 16 0;
+#X connect 10 1 1 1;
+#X connect 10 1 16 1;
+#X connect 11 0 10 0;
+#X connect 11 0 10 1;
 #X connect 12 0 11 1;
-#X connect 13 0 12 1;
-#X connect 14 0 12 1;
-#X connect 15 0 17 0;
-#X connect 16 0 17 0;
-#X connect 18 0 17 0;
-#X connect 19 0 4 0;
-#X connect 20 0 15 0;
-#X connect 21 0 14 0;
-#X connect 22 0 13 0;
-#X restore 746 371 pd reverb;
-#X obj 758 309 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X connect 13 0 11 1;
+#X connect 14 0 16 0;
+#X connect 18 0 3 0;
+#X connect 19 0 14 0;
+#X connect 20 0 13 0;
+#X connect 21 0 12 0;
+#X connect 22 0 0 0;
+#X restore 96 576 pd reverb;
+#X obj 108 514 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 808 307 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 158 512 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 846 309 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 196 514 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X text 739 275 open;
-#X text 794 276 start;
-#X text 842 275 stop;
+#X text 89 480 open;
+#X text 144 481 start;
+#X text 192 480 stop;
 #X connect 1 0 5 0;
 #X connect 1 1 5 1;
 #X connect 2 0 5 0;
 #X connect 3 0 5 0;
 #X connect 4 0 5 0;
-#X connect 6 0 7 0;
-#X connect 7 0 15 0;
-#X connect 7 0 17 1;
-#X connect 11 0 12 0;
-#X connect 12 0 16 0;
-#X connect 14 0 20 0;
-#X connect 15 0 16 0;
-#X connect 15 0 18 0;
-#X connect 16 0 17 0;
-#X connect 17 0 14 0;
-#X connect 19 0 9 0;
-#X connect 19 0 29 0;
-#X connect 19 1 9 1;
-#X connect 19 1 29 1;
-#X connect 20 0 19 0;
-#X connect 20 0 19 1;
-#X connect 21 0 20 1;
-#X connect 22 0 20 1;
-#X connect 27 0 29 0;
-#X connect 28 0 29 0;
-#X connect 30 0 29 0;
-#X connect 31 0 11 0;
-#X connect 34 0 36 0;
-#X connect 37 0 38 0;
-#X connect 39 0 37 0;
-#X connect 44 0 45 0;
-#X connect 45 0 46 0;
-#X connect 46 0 47 0;
-#X connect 46 0 47 1;
-#X connect 48 0 51 0;
-#X connect 54 0 53 0;
-#X connect 55 0 53 1;
-#X connect 56 0 53 2;
+#X connect 14 0 13 0;
+#X connect 15 0 13 1;
+#X connect 16 0 13 2;
